@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="peliculas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c901f0a9-e8e7-4ce0-b394-91d1457c0311">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFF4E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="629e453e-2d6e-495e-9d61-367cb429a02b"/>
+	<subDataset name="dataset1" uuid="9482825a-ae69-40da-8f8e-d9f8b0a10ecb"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="SYNOPSIS" class="java.lang.String"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<field name="AUTHOR" class="java.lang.String"/>
+	<field name="ISBN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="31" width="802" height="48" uuid="36351895-3081-482f-a965-9a4e70528993"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Libros almacenadas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="25" uuid="e8eb533c-0eee-4da5-bdf2-d31d4cbc5b33"/>
+				<staticText>
+					<reportElement x="40" y="0" width="136" height="20" uuid="025f23dd-8439-4172-baf9-2bb18054832c"/>
+					<textElement textAlignment="Left">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="176" y="0" width="256" height="20" uuid="4965ba4c-0f50-4eab-bf45-cfce646991ef"/>
+					<textElement textAlignment="Left">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sinopsis]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="432" y="0" width="118" height="20" uuid="e7861c3f-bb5c-4db5-b148-25e9b078b9dc"/>
+					<textElement textAlignment="Left">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Año]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="550" y="0" width="122" height="20" uuid="c062c5be-ebd4-48b0-9f39-f81aa2a562a4"/>
+					<textElement textAlignment="Left">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Calificación]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="672" y="0" width="130" height="20" uuid="e99164be-1b34-4c93-844d-7ea9c431ecf5"/>
+					<textElement textAlignment="Left">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Duración (s)]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="29" uuid="d3278aa7-5750-46d4-a8cf-241443fcb8dc"/>
+				<frame>
+					<reportElement x="0" y="0" width="802" height="29" uuid="8c264b91-a1ef-4dd0-9c10-dd3c8adf3580"/>
+					<textField>
+						<reportElement x="40" y="0" width="136" height="20" uuid="54105c70-3f1b-4470-b9e7-1f21a9c34f12"/>
+						<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="176" y="0" width="256" height="20" uuid="71357495-7f62-434f-a1d1-9e68cb94eb1d"/>
+						<textFieldExpression><![CDATA[$F{SYNOPSIS}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="432" y="0" width="118" height="20" uuid="73a827ba-e5aa-4f84-8868-5dfa52364e17"/>
+						<textFieldExpression><![CDATA[$F{YEAR}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="550" y="0" width="122" height="20" uuid="ab011c55-eec0-40c5-ad9e-c1d4b6c3732f"/>
+						<textFieldExpression><![CDATA[$F{RATING}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="672" y="0" width="130" height="20" uuid="acd1b837-5bc1-4826-af4b-9c322375a272"/>
+						<textFieldExpression><![CDATA[$F{DURATION}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="702" y="11" width="100" height="20" uuid="c80028fb-d7a8-4087-8ba4-f9e34e05fe6d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

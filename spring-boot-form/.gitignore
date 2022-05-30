@@ -1,0 +1,5 @@
+.settings/
+target/
+bin
+.idea/
+./src/main/webapp/resources/assets/node_modules/

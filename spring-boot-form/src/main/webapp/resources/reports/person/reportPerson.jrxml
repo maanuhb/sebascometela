@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPerson" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d393f090-6f1b-46af-9ebf-b6a874eaee9f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_ID_PERSONA" class="java.lang.Integer"/>
+	<parameter name="P_ID_DEPARTAMENTO" class="java.lang.Integer"/>
+	<parameter name="P_ID_MUNICIPIO" class="java.lang.Integer"/>
+	<parameter name="P_FECHA_INICIO" class="java.lang.String"/>
+	<parameter name="P_FECHA_FIN" class="java.lang.String"/>
+	<parameter name="P_TELEFONO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT p.id_persona,p.nombre,p.especialidad,p.fecha_creacion, d.descripcion as departamento,m.descripcion as municipio,p.telefono as telefono
+FROM person p, departamento d, municipio m
+where   p.id_departamento = d.id_departamento and p.id_municipio= m.id_municipio
+AND ($P{P_ID_PERSONA} IS NULL OR $P{P_ID_PERSONA} = p.id_persona)
+AND ($P{P_ID_MUNICIPIO} IS NULL OR $P{P_ID_MUNICIPIO} = p.id_municipio)
+AND ($P{P_ID_DEPARTAMENTO} IS NULL OR $P{P_ID_DEPARTAMENTO} = p.id_departamento)
+AND ( $P{P_FECHA_INICIO} = '' OR   p.fecha_creacion >= STR_TO_DATE($P{P_FECHA_INICIO}, '%d/%m/%Y'))
+AND ( $P{P_FECHA_FIN} = '' OR   p.fecha_creacion <= STR_TO_DATE($P{P_FECHA_FIN}, '%d/%m/%Y') )
+AND ( $P{P_TELEFONO} = '' or $P{P_TELEFONO} =telefono )]]>
+	</queryString>
+	<field name="id_persona" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especialidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_creacion" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="departamento" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="45" uuid="e4d31e83-216e-4839-a41c-9cd8507b73c4"/>
+				<textElement textAlignment="Center">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPORTE DE PERSONA"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="72" height="20" uuid="a32e68c7-423a-4498-93e1-43b8c2f02c9d"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="100" height="20" uuid="5528292f-065e-484f-bf18-87f538aae912"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="0" width="100" height="20" uuid="8438f196-13d5-4abc-b7fb-0dca21e791af"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="0" width="64" height="20" uuid="f012c6bb-b830-428d-b996-042cbed4ab1c"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="72" height="20" uuid="edbd557b-07a4-4ed6-bce2-955d7b2da311"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUNICIPIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="67" height="20" uuid="d5b516cd-8a60-4d61-977e-fb3a0d930c08"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE CREACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="0" width="80" height="20" uuid="33c37366-8f7d-4856-a102-6958af6a3547"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="72" height="20" uuid="91ea8d44-8149-4d75-aece-f7dbb51b4f8b"/>
+				<textFieldExpression><![CDATA[$F{id_persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="100" height="20" uuid="c7a78e18-7c5b-4007-a4f2-6f5e692c3ba6"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="100" height="20" uuid="4203a32c-a725-4d3e-b5e1-e0eed5edc17c"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="64" height="20" uuid="5a5ee378-35e0-4860-8fd2-89d272ba808b"/>
+				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="0" width="72" height="20" uuid="c1553849-1d99-4c81-a01d-531ba25bacc7"/>
+				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="488" y="0" width="84" height="20" uuid="81d92b43-6663-4b72-98dd-d109e72061f1"/>
+				<textFieldExpression><![CDATA[$F{fecha_creacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="0" width="80" height="20" uuid="b52dd7e5-a04b-4003-a6c8-acd924d68d87"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
